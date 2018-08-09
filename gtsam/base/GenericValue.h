@@ -161,6 +161,11 @@ public:
       *this = GenericValue(derivedRhs); // calls copy constructor
       return *this;
     }
+    /// Assignment operator
+    virtual GenericValue& operator=(const GenericValue& rhs) {
+        const_cast<std::remove_const<T>::type&>(value_) = rhs.value_;
+        return *this;
+    }
 
   protected:
 
